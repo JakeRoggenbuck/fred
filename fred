@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+file = ARGV[0]
+unless file.nil?
+  x = File.size(file)
+  open(file, 'w') { |f| f.puts "" }
+  open(file, 'a') { |f|
+    ((x/4)+1).times do f.puts "fred" end
+  }
+else
+  puts "Sorry, not a valid file"
+end
+if ARGV[1] == "-u"
+  system("rm " + file)
+end
